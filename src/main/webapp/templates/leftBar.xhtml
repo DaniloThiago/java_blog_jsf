@@ -14,18 +14,16 @@
 			<h:form>
 
 				<p:menu style="width: 90%">
-					<p:submenu label="Usuário">
-						<p:menuitem value="Login" action="/views/user/home"	icon="pi pi-user" />
-					</p:submenu>
+					<p:menuitem value="Login" action="/views/user/home"	icon="pi pi-user" />
 					<p:submenu label="Post">
-						<p:menuitem value="Visualizar Post" action="/pedido/pedidoLista?faces-redirect=true" icon="pi pi-eye" /> 
-						<p:menuitem value="Novo Post" action="/views/post/home?faces-redirect=true" icon="pi pi-plus-circle" />
-						<p:menuitem value="Editar Post" action="/pedido/pedidoLista?faces-redirect=true" icon="pi pi-pencil" />
+						<p:menuitem value="Post" action="/views/post/home" icon="pi pi-eye" /> 
+						<p:menuitem value="New Post" action="/views/post/create" icon="pi pi-plus-circle" />
+						<p:menuitem value="Edit Post" action="/views/post/edit" icon="pi pi-pencil" />
 					</p:submenu>
-					<p:submenu label="Produtos">
-						<p:menuitem value="Novo Produto" action="/produtoForm?faces-redirect=true"
+					<p:submenu label="Users">
+						<p:menuitem value="New User" action="/produtoForm?faces-redirect=true"
 							icon="pi pi-plus-circle" />
-						<p:menuitem value="Estoque" action="/produtoEstoque?faces-redirect=true"
+						<p:menuitem value="Edit User" action="/produtoEstoque?faces-redirect=true"
 							icon="pi pi-box" />
 					</p:submenu>
 					
