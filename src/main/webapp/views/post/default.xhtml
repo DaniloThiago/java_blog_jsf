@@ -13,52 +13,36 @@
 		<div class="card">
 			<h:form id="formulario">
 
-				<!-- <p:fieldset legend="Lista de Pedidos">
+				<p:fieldset legend="Lista de Post">
 
-					<p:dataTable value="#{pedidoMBean.lista}" var="pedido"
-						id="tabelaPedido">
+					<p:card style="width: 25em" value="#{postMBean.lista}" var="post"
+						id="tabelaPost">
+						<f:facet name="title">
+							<h:outputText value="#{post.title}" />
+						</f:facet>
+						<f:facet name="subtitle">
+							<h:outputText value="#{post.subtitle}" />
+						</f:facet>
 
-						<p:column headerText="ID">
-							<h:outputText value="#{pedido.id}" />
-						</p:column>
+						<p>
+							<h:outputText value="#{post.text}" />
+						</p>
 
-						<p:column headerText="Data">
-							<h:outputText value="#{pedido.data}">
-								<f:convertDateTime dateStyle="default" pattern="dd/MM/yyyy" />
-							</h:outputText>
-						</p:column>
-
-						<p:column headerText="Nome do cliente">
-							<h:outputText value="#{pedido.cliente.nome}" />
-						</p:column>
-
-						<p:column headerText="Valor">
-							<h:outputText value="#{pedido.valorTotal}">
-								<f:convertNumber pattern="R$ #,##0.00" />
-							</h:outputText>
-						</p:column>
-
-						<p:column headerText="Opções">
-							<p:commandButton action="#{pedidoMBean.imprimir(pedido)}"
-								styleClass="ui-button-warning" icon="pi pi-print"
-								update=":formulario:tabelaPedido" />
-							<p:commandButton action="#{pedidoMBean.editar(pedido)}"
-								styleClass="ui-button-primary" icon="pi pi-pencil"
-								update=":formulario:tabelaPedido" />
-							<p:commandButton action="#{pedidoMBean.apagar(pedido)}"
-								styleClass="ui-button-danger" icon="pi pi-trash"
-								update=":formulario:tabelaPedido" />
-						</p:column>
-
-					</p:dataTable>
+						<f:facet name="footer">
+							<p:commandButton icon="pi pi-check" value="#{post.user.name}" />
+							<p:commandButton icon="pi pi-times"
+								value="#{post.category.description}"
+								styleClass="ui-button-secondary" style="margin-left: .5em" />
+						</f:facet>
+					</p:card>
 
 				</p:fieldset>
- -->
+
 			</h:form>
 			<br />
 
 		</div>
-	
+
 	</ui:composition>
 </h:body>
 

@@ -44,8 +44,9 @@ public class PostMBean implements Serializable {
 		postDAO.excluir(post);
 	}
 	
-	public List<Post> getList() throws BlogException {
-		return postDAO.listar();		
+	public List<Post> getlista() throws BlogException {
+		List<Post>lista = postDAO.listar();
+		return lista;
 	}
 	
 	public void editar(Post post) throws BlogException {
