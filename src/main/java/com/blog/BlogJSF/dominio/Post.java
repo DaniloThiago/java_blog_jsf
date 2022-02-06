@@ -37,8 +37,8 @@ public class Post implements Serializable{
 	private String date;
 
 	@OneToOne
-	@JoinColumn(name = "author")
-	private Author author;
+	@JoinColumn(name = "user")
+	private User user;
 
 	@OneToOne
 	@JoinColumn(name = "category")
@@ -50,13 +50,13 @@ public class Post implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(String title, String subtitle, String text, String date, Author author, Category category) {
+	public Post(String title, String subtitle, String text, String date, User user, Category category) {
 		super();
 		this.title = title;
 		this.subtitle = subtitle;
 		this.text = text;
 		this.date = date;
-		this.author = author;
+		this.user = user;
 		this.category = category;
 	}
 
@@ -100,12 +100,12 @@ public class Post implements Serializable{
 		this.date = date;
 	}
 
-	public Author getAuthor() {
-		return author;
+	public User getUser() {
+		return user;
 	}
 
-	public void setAuthor(Author author) {
-		this.author = author;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Category getCategory() {
@@ -120,7 +120,7 @@ public class Post implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -139,10 +139,10 @@ public class Post implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
-		if (author == null) {
-			if (other.author != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!author.equals(other.author))
+		} else if (!user.equals(other.user))
 			return false;
 		if (category == null) {
 			if (other.category != null)

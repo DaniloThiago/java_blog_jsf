@@ -19,26 +19,25 @@
 				<p:messages id="msgs" />
 
 				<h:panelGrid columns="3" cellpadding="7" styleClass="p-mb-3">
-					<p:outputLabel for="firstname" value="Firstname:" />
-					<p:inputText id="firstname"
-						value="#{remoteValidationView.firstname}" required="true"
+
+					<p:outputLabel for="login" value="Login:" />
+					<p:inputText id="login" value="#{user.email}" required="true"
 						label="Login">
 						<f:validateLength minimum="2" />
 					</p:inputText>
-					<p:message for="firstname" display="icon" />
+					<p:message for="login" display="icon" />
 
 					<p:outputLabel for="password" value="Password:" />
-					<p:inputText id="password" type="password" value="#{remoteValidationView.password}"
-						label="password" required="true">
+					<p:inputText id="password" value="#{user.senha}" required="true"
+						label="Password">
 						<f:validateLength minimum="2" />
-						<p:ajax update="msgPassword" event="keyup" />
 					</p:inputText>
-					<p:message for="password" id="msgPassword" display="icon" />
+					<p:message for="password" display="icon" />
 
 				</h:panelGrid>
 
-				<p:commandButton value="Save" update="@form"
-					action="#{remoteValidationView.save}" icon="pi pi-check" />
+				<p:commandButton value="Save" update="@form" action="#{user.save}"
+					icon="pi pi-check" />
 			</h:form>
 		</div>
 	</ui:define>

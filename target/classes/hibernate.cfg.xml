@@ -31,7 +31,7 @@
 		<!-- Drop and re-create the database schema on startup "create, update, validate" -->
 		<property name="hbm2ddl.auto">create</property>
 
-		<mapping class="com.blog.BlogJSF.dominio.Author" />
+		<mapping class="com.blog.BlogJSF.dominio.User" />
 		<mapping class="com.blog.BlogJSF.dominio.Category" />
 		<mapping class="com.blog.BlogJSF.dominio.Post" />
 
