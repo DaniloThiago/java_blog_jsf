@@ -17,9 +17,9 @@ public class PostMBean implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4379149671555061374L;
+	private static final long serialVersionUID = 1L;
 
-	private Post post =  new Post();
+	private Post post = new Post();
 	private Integer postId;
 	
 	private PostDAO postDAO = new PostDAO();
@@ -44,7 +44,7 @@ public class PostMBean implements Serializable {
 		postDAO.excluir(post);
 	}
 	
-	public List<Post> getlista() throws BlogException {
+	public List<Post> getLista() throws BlogException {
 		List<Post>lista = postDAO.listar();
 		return lista;
 	}
