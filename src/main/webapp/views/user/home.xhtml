@@ -34,6 +34,12 @@
 					</p:inputText>
 					<p:message for="password" display="icon" />
 
+					<div class="mb-3">
+						<label for="formControPassword" class="form-label">Password:</label>
+						<input type="password" name="password" class="form-control"
+							id="formControPassword">
+					</div>
+
 				</h:panelGrid>
 
 				<p:commandButton value="Save" update="@form" action="#{user.save}"
