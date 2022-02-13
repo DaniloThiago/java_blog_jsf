@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+	<ui:composition>
+		<div class="card">
+			<h:form id="formulario">
+				<p:dataView var="post" value="#{postMBean.lista}" rows="2"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					gridIcon="pi pi-th-large" listIcon="pi pi-bars" layout="grid"
+					gridRowStyleClass="p-md-12 p-lg-6 p-xl-4" flex="true">c
+
+					<p:dataViewGridItem>
+						<p:card style="width: 100%"
+						id="tabelaPost">
+						<f:facet name="title">
+							<h:outputText value="#{post.title}" />
+						</f:facet>
+						<f:facet name="subtitle">
+							<h:outputText value="#{post.subtitle}" />
+						</f:facet>
+
+						<p>
+							<h:outputText value="#{post.text}" />
+						</p>
+
+						<f:facet name="footer">
+						<div class="p-d-flex p-jc-between">
+							<p:commandButton icon="pi" value="#{post.user.name}" />
+							<p:commandButton icon="pi"
+								value="#{post.category.description}"
+								styleClass="ui-button-secondary" style="margin-left: .5em" />
+						</div>
+						
+						</f:facet>
+					</p:card> 
+					</p:dataViewGridItem>
+				</p:dataView>
+				<!--  <p:fieldset legend="Lista de Post">
+					<p:dataTable value="#{postMBean.lista}" var="post"
+						id="tabelaPedido">
+
+						<p:column headerText="title">
+							<h:outputText value="#{post.title}" />
+						</p:column>
+					</p:dataTable>
+					<p:card style="width: 25em" value="#{postMBean.lista}" var="post"
+						id="tabelaPost">
+						<f:facet name="title">
+							<h:outputText value="#{post.title}" />
+						</f:facet>
+						<f:facet name="subtitle">
+							<h:outputText value="#{post.subtitle}" />
+						</f:facet>
+
+						<p>
+							<h:outputText value="#{post.text}" />
+						</p>
+
+						<f:facet name="footer">
+							<p:commandButton icon="pi pi-check" value="#{post.user.name}" />
+							<p:commandButton icon="pi pi-times"
+								value="#{post.category.description}"
+								styleClass="ui-button-secondary" style="margin-left: .5em" />
+						</f:facet>
+					</p:card> 
+				</p:fieldset>
+				-->
+			</h:form>
+			<br />
+
+		</div>
+
+	</ui:composition>
+</h:body>
+
+
+</html>

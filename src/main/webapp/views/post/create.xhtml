@@ -27,12 +27,15 @@
 				<p:messages id="mensagens" />
 
 				<p:fieldset legend="Post" id="dadosPost">
-					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
 
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">
 						<p:outputLabel for="dataPedido" value="Data: " />
 						<h:outputText id="dataPedido" value="#{postMBean.date}">
 							<f:convertDateTime dateStyle="default" pattern="dd/MM/yyyy" />
 						</h:outputText>
+					</h:panelGrid>
+
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
 
 						<p:fieldset legend="Usuario" id="dadosUser">
 							<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
@@ -47,14 +50,46 @@
 						<p:fieldset legend="Categoria" id="dadosCategory">
 							<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
 								<p:outputLabel for="nomeCategory" value="Categoria: " />
-								<p:selectOneMenu id="nomeCategory" value="#{postMBean.categoryId}">
+								<p:selectOneMenu id="nomeCategory"
+									value="#{postMBean.categoryId}">
 									<f:selectItems value="#{postMBean.listaCategories}"
 										var="category" itemValue="#{category.id}"
 										itemLabel="#{category.description}" />
 								</p:selectOneMenu>
 							</h:panelGrid>
 						</p:fieldset>
+
+
 					</h:panelGrid>
+
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">
+
+						<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+							<p:outputLabel for="title" value="Título: " />
+							<p:inputText id="title" value="#{postMBean.post.title}"></p:inputText>
+						</h:panelGrid>
+
+						<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+							<p:outputLabel for="subtitle" value="SubTítulo: " />
+							<p:inputText id="subtitle" value="#{postMBean.post.subtitle}"></p:inputText>
+						</h:panelGrid>
+
+					</h:panelGrid>
+					
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">
+
+						<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+							<p:outputLabel for="text" value="Texto: " />
+							<p:inputTextarea  id="text" value="#{postMBean.post.text}"
+							rows="5" cols="30"></p:inputTextarea >
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">					
+						<p:commandButton value="Salvar Post" action="#{postMBean.gravar}" />
+					</h:panelGrid>
+
 				</p:fieldset>
 
 			</h:form>
