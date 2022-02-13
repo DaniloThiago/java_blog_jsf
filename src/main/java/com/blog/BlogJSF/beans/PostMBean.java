@@ -35,6 +35,8 @@ public class PostMBean implements Serializable {
 	private PostDAO postDAO = new PostDAO();
 	private UserDAO userDAO = new UserDAO();
 	private CategoryDAO categoryDAO = new CategoryDAO();
+	
+	private Date date = new Date();
 
 	public Post getPost() {
 		return post;
@@ -96,15 +98,17 @@ public class PostMBean implements Serializable {
 			this.post = postDAO.buscarId(this.postId);
 
 			this.userId = this.post.getUser().getId();
-			this.user = userDAO.buscarId(this.userId);
+			this.setUser(userDAO.buscarId(this.userId));
 
 			this.categoryId = this.post.getCategory().getId();
-			this.category = categoryDAO.buscarId(this.categoryId);
+			this.setCategory(categoryDAO.buscarId(this.categoryId));
+			
+			this.date = this.post.getDate();
 
 		} else {
 			post = new Post();
-			user = new User();
-			category = new Category();
+			setUser(new User());
+			setCategory(new Category());
 
 		}
 
@@ -117,5 +121,29 @@ public class PostMBean implements Serializable {
 			postDAO.atualizar(this.post);
 		}
 		this.post = new Post();
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }
