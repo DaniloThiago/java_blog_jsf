@@ -13,53 +13,50 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity // Class vai representar uma table no DB
-@Table(name = "user")
+@Table(name = "usuario")
 @Named
 @RequestScoped
-public class User implements Serializable {
+public class Usuario implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-  
-    
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(length = 255, nullable = false)
-	private String name;
-	
+	private String nome;
+
 	@Column(length = 50, nullable = false)
 	private String email;
 
 	@Column(length = 10, nullable = false)
 	private String senha;
 
-	@Column(name = "role")
-	private String role;
-	
-	public User() {
+	@Column(name = "tipo")
+	private String tipo;
+
+	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public User(String name, String email, String senha, String role) {
+
+	public Usuario(String nome, String email, String senha, String tipo) {
 		super();
-		this.name = name;
+		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.role = role;
+		this.tipo = tipo;
 	}
 
-    public void save() {
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Welcome " + email + " " + senha));
-    }
-	
+	public void save() {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome " + email + " " + senha));
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -68,12 +65,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {
@@ -88,16 +85,16 @@ public class User implements Serializable {
 		return senha;
 	}
 
-	public String getString() {
-		return role;
-	}
-
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
 
-	public void setString(String role) {
-		this.role = role;
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override
@@ -106,9 +103,9 @@ public class User implements Serializable {
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
 	}
 
@@ -120,7 +117,7 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Usuario other = (Usuario) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -131,20 +128,20 @@ public class User implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (nome == null) {
+			if (other.nome != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!nome.equals(other.nome))
 			return false;
 		if (senha == null) {
 			if (other.senha != null)
 				return false;
 		} else if (!senha.equals(other.senha))
 			return false;
-		if (role == null) {
-			if (other.role != null)
+		if (tipo == null) {
+			if (other.tipo != null)
 				return false;
-		} else if (!role.equals(other.role))
+		} else if (!tipo.equals(other.tipo))
 			return false;
 		return true;
 	}

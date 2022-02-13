@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity // Class vai representar uma table no DB
-@Table(name = "category")
-public class Category implements Serializable{
+@Table(name = "categoria")
+public class Categoria implements Serializable{
 
 	/**
 	 * 
@@ -23,17 +23,17 @@ public class Category implements Serializable{
 	private Integer id;
 	
 	@Column(length = 255, nullable = false)
-	private String description;
+	private String descricao;
 
 	
-	public Category() {
+	public Categoria() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Category(Integer id, String description) {
+	public Categoria(Integer id, String descricao) {
 		super();
-		this.description = description;
+		this.descricao = descricao;
 	}
 
 	public Integer getId() {
@@ -44,19 +44,19 @@ public class Category implements Serializable{
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
@@ -69,11 +69,11 @@ public class Category implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
-		if (description == null) {
-			if (other.description != null)
+		Categoria other = (Categoria) obj;
+		if (descricao == null) {
+			if (other.descricao != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		if (id == null) {
 			if (other.id != null)

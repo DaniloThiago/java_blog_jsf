@@ -1,8 +1,8 @@
 package com.blog.BlogJSF.dao;
 
-import com.blog.BlogJSF.dominio.Category;
+import com.blog.BlogJSF.dominio.Usuario;
 
-public class CategoryDAO extends GenericDAO<Category>{
+public class UsuarioDAO extends GenericDAO<Usuario>{
 
 	/**
 	 * 
