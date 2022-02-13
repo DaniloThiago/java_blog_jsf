@@ -15,8 +15,8 @@
 
 	<ui:define name="resources">
 		<f:metadata>
-			<f:viewParam name="id" value="#{postMBean.postId}" />
-			<f:viewAction action="#{postMBean.carregar}" />
+			<f:viewParam name="id" value="#{postagemMBean.postagemId}" />
+			<f:viewAction action="#{postagemMBean.carregar}" />
 		</f:metadata>
 	</ui:define>
 
@@ -26,35 +26,35 @@
 			<h:form id="formuluario">
 				<p:messages id="mensagens" />
 
-				<p:fieldset legend="Post" id="dadosPost">
+				<p:fieldset legend="Postagem" id="dadosPostagem">
 
 					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">
-						<p:outputLabel for="dataPedido" value="Data: " />
-						<h:outputText id="dataPedido" value="#{postMBean.date}">
+						<p:outputLabel for="dataPostagem" value="Data: " />
+						<h:outputText id="dataPostagem" value="#{PostagemMBean.data}">
 							<f:convertDateTime dateStyle="default" pattern="dd/MM/yyyy" />
 						</h:outputText>
 					</h:panelGrid>
 
 					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
 
-						<p:fieldset legend="Usuario" id="dadosUser">
+						<p:fieldset legend="Usuario" id="dadosUsuario">
 							<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
-								<p:outputLabel for="nomeUser" value="Nome: " />
-								<p:selectOneMenu id="nomeUser" value="#{postMBean.userId}">
-									<f:selectItems value="#{postMBean.listaUsers}" var="user"
-										itemValue="#{user.id}" itemLabel="#{user.name}" />
+								<p:outputLabel for="nomeUsuario" value="Nome: " />
+								<p:selectOneMenu id="nomeUsuario" value="#{postagemMBean.usuarioId}">
+									<f:selectItems value="#{postagemMBean.listaUsuarios}" var="usuario"
+										itemValue="#{usuario.id}" itemLabel="#{usuario.nome}" />
 								</p:selectOneMenu>
 							</h:panelGrid>
 						</p:fieldset>
 
-						<p:fieldset legend="Categoria" id="dadosCategory">
+						<p:fieldset legend="Categoria" id="dadosCategoria">
 							<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
-								<p:outputLabel for="nomeCategory" value="Categoria: " />
-								<p:selectOneMenu id="nomeCategory"
-									value="#{postMBean.categoryId}">
-									<f:selectItems value="#{postMBean.listaCategories}"
-										var="category" itemValue="#{category.id}"
-										itemLabel="#{category.description}" />
+								<p:outputLabel for="nomeCategoria" value="Categoria: " />
+								<p:selectOneMenu id="nomeCategoria"
+									value="#{postagemMBean.categoriaId}">
+									<f:selectItems value="#{postagemMBean.listaCategorias}"
+										var="categoria" itemValue="#{categoria.id}"
+										itemLabel="#{categoria.descricao}" />
 								</p:selectOneMenu>
 							</h:panelGrid>
 						</p:fieldset>
@@ -65,13 +65,13 @@
 					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">
 
 						<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
-							<p:outputLabel for="title" value="Título: " />
-							<p:inputText id="title" value="#{postMBean.post.title}"></p:inputText>
+							<p:outputLabel for="titulo" value="Título: " />
+							<p:inputText id="titulo" value="#{postagemMBean.postagem.titulo}"></p:inputText>
 						</h:panelGrid>
 
 						<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
-							<p:outputLabel for="subtitle" value="SubTítulo: " />
-							<p:inputText id="subtitle" value="#{postMBean.post.subtitle}"></p:inputText>
+							<p:outputLabel for="subtitulo" value="SubTítulo: " />
+							<p:inputText id="subtitulo" value="#{postagemMBean.postagem.subtitulo}"></p:inputText>
 						</h:panelGrid>
 
 					</h:panelGrid>
@@ -79,15 +79,15 @@
 					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">
 
 						<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
-							<p:outputLabel for="text" value="Texto: " />
-							<p:inputTextarea  id="text" value="#{postMBean.post.text}"
+							<p:outputLabel for="texto" value="Texto: " />
+							<p:inputTextarea  id="texto" value="#{postagemMBean.postagem.texto}"
 							rows="5" cols="30"></p:inputTextarea >
 						</h:panelGrid>
 
 					</h:panelGrid>
 
 					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-12">					
-						<p:commandButton value="Salvar Post" action="#{postMBean.gravar}" />
+						<p:commandButton value="Salvar Post" action="#{postagemMBean.gravar}" update="formuluario" />
 					</h:panelGrid>
 
 				</p:fieldset>
