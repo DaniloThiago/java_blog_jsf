@@ -12,9 +12,55 @@
 	<ui:define name="title">
 		Criar Postagem
 	</ui:define>
-	
+
+	<ui:define name="resources">
+		<f:metadata>
+			<f:viewParam name="id" value="#{postMBean.postId}" />
+			<f:viewAction action="#{postMBean.carregar}" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="content">
-		<h1>Create Post</h1>			
+
+		<div class="card">
+			<h:form id="formuluario">
+				<p:messages id="mensagens" />
+
+				<p:fieldset legend="Post" id="dadosPost">
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+
+						<p:outputLabel for="dataPedido" value="Data: " />
+						<h:outputText id="dataPedido" value="#{postMBean.data}">
+							<f:convertDateTime dateStyle="default" pattern="dd/MM/yyyy" />
+						</h:outputText>
+
+					</h:panelGrid>
+				</p:fieldset>
+
+				<p:fieldset legend="Usuario" id="dadosUser">
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+						<p:outputLabel for="nomeUser" value="Nome: " />
+						<p:selectOneMenu id="nomeUser" value="#{postMBean.userId}">
+							<f:selectItems value="#{postMBean.listaUsers}" var="user"
+								itemValue="#{user.id}" itemLabel="#{user.name}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</p:fieldset>
+
+				<p:fieldset legend="Categoria" id="dadosCategory">
+					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+						<p:outputLabel for="nomeCategory" value="Categoria: " />
+						<p:selectOneMenu id="nomeCategory" value="#{postMBean.categoryId}">
+							<f:selectItems value="#{postMBean.listaCategories}"
+								var="category" itemValue="#{category.id}"
+								itemLabel="#{category.description}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+				</p:fieldset>
+
+			</h:form>
+		</div>
+
 	</ui:define>
 
 </ui:composition>
