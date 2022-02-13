@@ -29,27 +29,31 @@
 				<p:fieldset legend="Post" id="dadosPost">
 					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
 
-					</h:panelGrid>
-				</p:fieldset>
+						<p:outputLabel for="dataPedido" value="Data: " />
+						<h:outputText id="dataPedido" value="#{postMBean.date}">
+							<f:convertDateTime dateStyle="default" pattern="dd/MM/yyyy" />
+						</h:outputText>
 
-				<p:fieldset legend="Usuario" id="dadosUser">
-					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
-						<p:outputLabel for="nomeUser" value="Nome: " />
-						<p:selectOneMenu id="nomeUser" value="#{postMBean.userId}">
-							<f:selectItems value="#{postMBean.listaUsers}" var="user"
-								itemValue="#{user.id}" itemLabel="#{user.name}" />
-						</p:selectOneMenu>
-					</h:panelGrid>
-				</p:fieldset>
+						<p:fieldset legend="Usuario" id="dadosUser">
+							<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+								<p:outputLabel for="nomeUser" value="Nome: " />
+								<p:selectOneMenu id="nomeUser" value="#{postMBean.userId}">
+									<f:selectItems value="#{postMBean.listaUsers}" var="user"
+										itemValue="#{user.id}" itemLabel="#{user.name}" />
+								</p:selectOneMenu>
+							</h:panelGrid>
+						</p:fieldset>
 
-				<p:fieldset legend="Categoria" id="dadosCategory">
-					<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
-						<p:outputLabel for="nomeCategory" value="Categoria: " />
-						<p:selectOneMenu id="nomeCategory" value="#{postMBean.categoryId}">
-							<f:selectItems value="#{postMBean.listaCategories}"
-								var="category" itemValue="#{category.id}"
-								itemLabel="#{category.description}" />
-						</p:selectOneMenu>
+						<p:fieldset legend="Categoria" id="dadosCategory">
+							<h:panelGrid columns="4" cellpadding="5" styleClass="p-mb-3">
+								<p:outputLabel for="nomeCategory" value="Categoria: " />
+								<p:selectOneMenu id="nomeCategory" value="#{postMBean.categoryId}">
+									<f:selectItems value="#{postMBean.listaCategories}"
+										var="category" itemValue="#{category.id}"
+										itemLabel="#{category.description}" />
+								</p:selectOneMenu>
+							</h:panelGrid>
+						</p:fieldset>
 					</h:panelGrid>
 				</p:fieldset>
 

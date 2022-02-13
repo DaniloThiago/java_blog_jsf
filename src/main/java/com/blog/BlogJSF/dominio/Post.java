@@ -1,6 +1,7 @@
 package com.blog.BlogJSF.dominio;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity // Class vai representar uma table no DB
 @Table(name = "post")
@@ -33,8 +36,8 @@ public class Post implements Serializable{
 	@Column(nullable = false,  columnDefinition="TEXT")
 	private String text;
 
-	@Column(length = 19, nullable = false)
-	private String date;
+	@Temporal(TemporalType.DATE)
+	private Date date;
 
 	@OneToOne
 	@JoinColumn(name = "user")
@@ -50,7 +53,7 @@ public class Post implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(String title, String subtitle, String text, String date, User user, Category category) {
+	public Post(String title, String subtitle, String text, Date date, User user, Category category) {
 		super();
 		this.title = title;
 		this.subtitle = subtitle;
@@ -92,11 +95,11 @@ public class Post implements Serializable{
 		this.text = text;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
