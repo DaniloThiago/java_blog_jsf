@@ -1,12 +1,13 @@
 package com.blog.BlogJSF.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import com.blog.BlogJSF.dao.CategoryDAO;
 import com.blog.BlogJSF.dao.PostDAO;
@@ -69,6 +70,30 @@ public class PostMBean implements Serializable {
 	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	public void excluir(Post post) throws BlogException {
 		postDAO.excluir(post);
@@ -104,46 +129,39 @@ public class PostMBean implements Serializable {
 			this.setCategory(categoryDAO.buscarId(this.categoryId));
 			
 			this.date = this.post.getDate();
-
+			
 		} else {
 			post = new Post();
 			setUser(new User());
 			setCategory(new Category());
-
 		}
-
 	}
+	
+	public String gravar() throws BlogException {
 
-	public void gravar() throws BlogException {
-		if (this.post.getId() == null) {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+
+		if (post.getId() != null) {
+
+			post.setDate(this.date);
+			post.setUser(this.user);
+			post.setCategory(this.category);			
+			
 			postDAO.salvar(this.post);
+
+			post = new Post();
+			user = new User();
+			category = new Category();
+			
+			return "/post/home?faces-redirect=true";
+
 		} else {
-			postDAO.atualizar(this.post);
+			postDAO.atualizar(post);
+			facesContext.addMessage("Post",
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Algo de errado não está correto", ""));
+			return "";
 		}
-		this.post = new Post();
+
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
 }
