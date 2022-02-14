@@ -43,14 +43,13 @@ public class Postagem implements Serializable{
 
 	@JoinColumn(name = "categoria")
 	private Integer categoriaId;
-
 	
 	public Postagem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Postagem(String titulo, String subtitulo, String texto, Date data, Integer usuarioId, Integer categoriaId) {
+	public Postagem(String titulo, String subtitulo, String texto, Date data, Integer usuarioId, Integer categoriaId, Usuario usuario) {
 		super();
 		this.titulo = titulo;
 		this.subtitulo = subtitulo;
